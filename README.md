@@ -1,8 +1,28 @@
-# NixCmds
+# 'nixCmds
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/nix_cmds`. To experiment with that code, run `bin/console` for an interactive prompt.
+Linux/Unix/OSX OS Command helpers.
+- All commands return a result object (success?, exit_code, stdout, stderr)
+- Call a command with #run (returns boolean) or #run! (raises error on failure).
 
-TODO: Delete this and the text above, and describe your gem
+## Usage
+
+e.g. for rsync
+```
+cmd = RsyncCommand.new(
+  destination_server: 'foo,
+  destination_user: 'bar',
+  dry_run: true,
+  logger: Rails.logger,
+)
+
+args = ['--progress', '--recursive' '--times']
+result = cmd.run!(args)
+puts "Hurray!" if result.success?
+# also available
+result.exit_code
+result.stdout
+result stderr
+```
 
 ## Installation
 
@@ -20,9 +40,18 @@ Or install it yourself as:
 
     $ gem install nix_cmds
 
-## Usage
+## Supported commands
 
-TODO: Write usage instructions here
+- rsync
+
+## TODO
+
+- add more commands
+- helpful notifications (logs and stdout)
+- verify passed args are supported by command
+- come up with helpful interface for command args/flags
+- support streaming results
+
 
 ## Development
 
