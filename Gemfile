@@ -11,3 +11,4 @@ gem 'bundler', '~> 1.16'
 gem 'pry-byebug'
 gem 'rake', '~> 10.0'
 gem 'rspec', '~> 3.0'
+gem 'rspec-its', require: false
