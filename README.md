@@ -8,7 +8,7 @@ Linux/Unix/OSX OS Command helpers.
 
 e.g. for rsync
 ```
-cmd = RsyncCommand.new(
+cmd = NixCmds::RsyncCommand.new(
   destination_server: 'foo,
   destination_user: 'bar',
   dry_run: true,

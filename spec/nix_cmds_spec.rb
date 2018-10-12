@@ -1,3 +1,5 @@
+require_relative '../lib/nix_cmds/rsync_cmd'
+
 RSpec.describe NixCmds do
   it 'has a version number' do
     expect(NixCmds::VERSION).to be_a(Gem::Version)
