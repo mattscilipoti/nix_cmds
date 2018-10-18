@@ -32,7 +32,7 @@ RSpec.shared_examples 'all NixCmds' do |_parameter|
     let(:expected_args) { ['--dry-run', 'a/', 'b/'] }
     let(:sample_executable) { 'ls' }
     before(:each) do
-      allow(subject).to receive(:cmd).and_return(sample_executable)
+      allow(subject).to receive(:executable).and_return(sample_executable)
     end
 
     it 'should return a CommandResult' do
@@ -42,7 +42,7 @@ RSpec.shared_examples 'all NixCmds' do |_parameter|
     end
 
     it 'should call _perform_commmand with executable and args' do
-      expect(subject).to receive(:_perform_command).with(subject.cmd, expected_args)
+      expect(subject).to receive(:_perform_command).with(subject.executable, expected_args)
       subject.run(source_dir: 'a', destination_dir: 'b')
     end
 

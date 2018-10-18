@@ -16,7 +16,7 @@ module NixCmds
       @logger = logger
     end
 
-    def cmd
+    def executable
       raise NotImplementedError, 'Template method: this should be implemented in each child.'
     end
 
@@ -30,11 +30,11 @@ module NixCmds
       cmd_args << "#{destination_dir}/"
 
       logger.debug "Running '#{self}'"
-      result = _perform_command(cmd, cmd_args)
+      result = _perform_command(executable, cmd_args)
 
       @result = result
 
-      msg = "Completed #{cmd}. #{result}"
+      msg = "Completed #{executable}. #{result}"
       logger.info msg
       logger.error(result.stderr) unless result.success?
 
@@ -48,13 +48,13 @@ module NixCmds
     end
 
     def to_s
-      "#{cmd} #{cmd_args.join(' ')}"
+      "#{executable} #{cmd_args.join(' ')}"
     end
 
     private
 
-    def _perform_command(cmd, cmd_args)
-      stdout, stderr, status = Open3.capture3(cmd, *cmd_args)
+    def _perform_command(executable, cmd_args)
+      stdout, stderr, status = Open3.capture3(executable, *cmd_args)
 
       CommandResult.new(
         exit_code: status.exitstatus,

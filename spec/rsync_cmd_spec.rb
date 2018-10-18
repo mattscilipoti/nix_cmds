@@ -22,6 +22,6 @@ RSpec.describe NixCmds::RsyncCmd do
   it_behaves_like 'all NixCmds'
 
   describe '(defaults)' do
-    its(:cmd) { should eq 'rsync' }
+    its(:executable) { should eq 'rsync' }
   end
 end

@@ -6,7 +6,7 @@ module NixCmds
   # wraps rsync command (to remote server)
   # returns CommandResult
   class RsyncCmd < NixCmd
-    def cmd
+    def executable
       'rsync'
     end
   end

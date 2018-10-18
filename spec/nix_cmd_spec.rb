@@ -23,8 +23,8 @@ RSpec.describe NixCmds::NixCmd do
   it_behaves_like 'all NixCmds'
 
   describe '(defaults)' do
-    it 'should NOT implement #cmd' do
-      expect { base_cmd.cmd }.to raise_error(NotImplementedError, /child/)
+    it 'should NOT implement #executable' do
+      expect { base_cmd.executable }.to raise_error(NotImplementedError, /child/)
     end
   end
 end
